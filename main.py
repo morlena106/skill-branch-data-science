@@ -6,7 +6,7 @@ def derivation(x,func):
     return round(pr,2)
 
 def gradient(xlist, func):
-    e = 0.0001
+    e = 0.00001
     x1 = xlist[0]
     x2 = xlist[1]
     pr1 = (func([x1 + e, x2]) - func([x1, x2])) / e
