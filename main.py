@@ -1,5 +1,6 @@
 from math import *
 
 def derivation(x,func):
-    y = round(-sin(x)+0.15*x**2+2/(x*log(2)),2)
-    return y
+    e = 0.0001
+    pr = (func(x + h) - func(x)) / h
+    return round(pr,2)
