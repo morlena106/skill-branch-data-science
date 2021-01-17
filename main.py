@@ -29,7 +29,7 @@ def gradient_optimization_multi_dim(func):
     
     for i in range(50):
 
-        x = [x1, x2]
+        x = [round(x1, 2), round(x2, 2)]
         x_1 = [x1 + e, x2]
         x_2 = [x1, x2 + e]
 
