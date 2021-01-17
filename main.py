@@ -19,8 +19,5 @@ def gradient_optimization_one_dim(func):
     x = 10
     for i in range(50):
         pr = (func(x + e) - func(x)) / e
-        if pr > 0:
-            x -= e
-        else:
-            x += e
-    return x 
+        x = x - e*pr
+    return round(x, 2)
