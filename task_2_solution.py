@@ -5,7 +5,7 @@ def take_columns(d):
     return d.columns
 
 def calculate_target_ratio(d,target_name):
-    return d[target_name].mean()
+    return round(d[target_name].mean(),2)
 
 def calculate_data_dtypes(d):
     object_c = 0
