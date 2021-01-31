@@ -59,8 +59,8 @@ def calculate_squared_stats_by_material(data1):
     #material_max = data1.groupby('material')['full_sq'].max()
     #material_min = data1.groupby('material')['full_sq'].min()
     #return round(material_max,2), round(material_min,2)
-    return data1.pivot_table('full_sq', index = 'material',aggfunc=['max','min'])
+    return data1.pivot_table('full_sq', index = 'material',aggfunc={'full_sq': [np.max, np.min]})
 
 #10
 def calculate_crosstab(data1):
-    return round(data1.groupby(['sub_area','product_type'])['full_sq'].mean(),2)
+    return round(data1.pivot_table('price_doc', index = 'sub_area', columns = 'product_type', aggfunc='mean',fill_value=0),2)
