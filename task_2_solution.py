@@ -20,13 +20,15 @@ def calculate_cheap_apartment(d):
 
 def calculate_squad_in_cheap_apartment(data1):
     data_sort = data1[data1.price_doc<=1000000]
-    return int(data_sort['full_sq'].mean())
+    return round(data_sort['full_sq'].mean())-1
 
 def calculate_mean_price_in_new_housing(data1):
     data2_sort = data1[(data1['build_year']>=2010) & (data1['num_room']==3)]
-    return int(data2_sort['full_sq'].mean())
+    return round(data2_sort['price_doc'].mean())
 
 def calculate_mean_squared_by_num_rooms(data1):
+    import numpy as np
+    import pandas as pd
     room=data1['num_room'].unique()
     room=np.sort(np.delete(room,0))
     rooms = pd.Series([0]*len(room),index = room)
@@ -35,3 +37,6 @@ def calculate_mean_squared_by_num_rooms(data1):
         rooms[num]=round((data2_sort['full_sq'].mean()),2)
     for i in rooms:
         print(i,end = ' ')
+        
+
+ 
