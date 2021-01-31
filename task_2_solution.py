@@ -53,3 +53,13 @@ def calculate_mean_squared_by_num_rooms(data1):
     data2 = data1.groupby('num_room')['full_sq'].mean()
     return round(data2,2)
  
+    
+#9
+def calculate_squared_stats_by_material(data1):
+    material_max = data1.groupby('material')['full_sq'].max()
+    material_min = data1.groupby('material')['full_sq'].min()
+    return round(material_max,2), round(material_min,2)
+
+#10
+def calculate_crosstab(data1):
+    return round(data1.groupby(['sub_area','product_type'])['full_sq'].mean(),2)
