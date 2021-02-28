@@ -41,3 +41,10 @@ def prepare_data_for_model(data,scaler):
     data_scaler = scaler.fit_transform(data[numeric_features])
     
     return data_scaler, y 
+
+from sklearn.linear_model import LinearRegression
+
+def fit_first_linear_model(x_train,y_train):
+    model = LinearRegression()
+    my_model = model.fit(x_train, y_train)
+    return my_model
