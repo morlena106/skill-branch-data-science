@@ -23,3 +23,9 @@ def prepare_data(data):
     data = data.drop(columns=["price_doc"])
     select_data = data.select_dtypes([np.number])
     return select_data.dropna(axis=1), y
+
+def scale_data(data, scaler):
+    numeric_data = data.select_dtypes([np.number])
+    numeric_features = numeric_data.columns
+    data_scaler = scaler.fit_transform(data[numeric_features])
+    return data_scaler
