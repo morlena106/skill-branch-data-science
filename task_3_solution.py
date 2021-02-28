@@ -26,12 +26,18 @@ def prepare_data(data):
     return select_data.dropna(axis=1), y
 
 #3
-def scale_data(data, scaler):
+'''def scale_data(data, scaler):
     numeric_data = data.select_dtypes([np.number])
     numeric_features = numeric_data.columns
     data_scaler = scaler.fit_transform(data[numeric_features])
     return data_scaler
-
+'''
+def scale_data(data, scaler):
+    numeric_data = data.select_dtypes([np.number])
+    numeric_features = numeric_data.columns
+    data_scaler = scaler.fit_transform(data[numeric_features])
+    scales = pd.Series(data=data_scaler.std(axis=0), index=numeric_features)
+    return scales
 #4
 '''def prepare_data_for_model(data,scaler):
     
