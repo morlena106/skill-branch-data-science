@@ -30,7 +30,8 @@ def scale_data(data, scaler):
     numeric_data = data.select_dtypes([np.number])
     numeric_features = numeric_data.columns
     data_scaler = scaler.fit_transform(data[numeric_features])
-    return data_scaler
+    scales = pd.DataFrame(data_scaler, index=range(data_scaler.shape[0]), columns=range(data_scaler.shape[1]))
+    return scales
 
 '''def scale_data(data, scaler):
     numeric_data = data.select_dtypes([np.number])
