@@ -18,7 +18,7 @@ def split_data_into_two_samples(data):
 
 def prepare_data(data):
     #select_data = data.select_dtypes(exclude=[object])
-    data = data.drop(columns=["Id"])
+    data = data.drop(columns=["id"])
     y = data["SalePrice"]
     data = data.drop(columns=["SalePrice"])
     select_data = data.select_dtypes([np.number])
