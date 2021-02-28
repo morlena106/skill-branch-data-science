@@ -33,11 +33,11 @@ def scale_data(data, scaler):
     return data_scaler
 
 #4
-def prepare_data_for_model(data,scaler):
+'''def prepare_data_for_model(data,scaler):
     
-    data = data.drop(columns=["id"])
-    y = data["price_doc"]
-    data = data.drop(columns=["price_doc"])
+    data = data.drop(columns=["Id"])
+    y = data["SalePrice"]
+    data = data.drop(columns=["SalePrice"])
     
     numeric_data = data.select_dtypes([np.number])
     
@@ -47,6 +47,12 @@ def prepare_data_for_model(data,scaler):
     
     data_scaler = scaler.fit_transform(numeric_data[numeric_features])
     
+    return data_scaler, y 
+'''
+
+def prepare_data_for_model(data,scaler):
+    data, y  = prepare_data(data)
+    data_scaler = scale_data(data, scaler)
     return data_scaler, y 
 
 
