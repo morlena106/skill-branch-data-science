@@ -26,18 +26,18 @@ def prepare_data(data):
     return select_data.dropna(axis=1), y
 
 #3
-'''def scale_data(data, scaler):
-    numeric_data = data.select_dtypes([np.number])
-    numeric_features = numeric_data.columns
-    data_scaler = scaler.fit_transform(data[numeric_features])
-    return data_scaler
-'''
 def scale_data(data, scaler):
     numeric_data = data.select_dtypes([np.number])
     numeric_features = numeric_data.columns
     data_scaler = scaler.fit_transform(data[numeric_features])
+    return data_scaler
+
+'''def scale_data(data, scaler):
+    numeric_data = data.select_dtypes([np.number])
+    numeric_features = numeric_data.columns
+    data_scaler = scaler.fit_transform(data[numeric_features])
     scales = pd.Series(data=data_scaler.std(axis=0), index=numeric_features)
-    return scales
+    return scales'''
 #4
 '''def prepare_data_for_model(data,scaler):
     
@@ -63,7 +63,7 @@ def prepare_data_for_model(data,scaler):
 
 
 from sklearn.linear_model import LinearRegression
-#5
+#5,6
 def fit_first_linear_model(x_train,y_train):
     model = LinearRegression()
     my_model = model.fit(x_train, y_train)
