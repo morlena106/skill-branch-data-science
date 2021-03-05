@@ -69,3 +69,18 @@ def fit_first_linear_model(x_train,y_train):
     model = LinearRegression()
     my_model = model.fit(x_train, y_train)
     return my_model
+
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+
+def evaluate_model(model, x_valid, y_valid):  # 7
+
+    y_pred = model.predict(x_valid)
+    mse = round(mean_squared_error(y_valid, y_pred), 2)
+    mae = round(mean_absolute_error(y_valid, y_pred), 2)
+    r2 = round(r2_score(y_valid, y_pred), 2)
+    return mse, mae, r2
+
+
+def calculate_model_weights(my_model, columns):  # 8
+
+    return pd.DataFrame(my_model, index=columns, columns=["features", "weights"])
